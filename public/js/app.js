@@ -3,6 +3,8 @@ const App = {
 rootElement:'#app',
 numCols: 7,
 colHeight: 6,
+cellWidth: 25,
+cellHeight: 25,
 grid:[],
 
 start:function () {
@@ -29,7 +31,15 @@ bindEvents:function () {
 },
 
 render:function () {
-  this.gridOutput.innerHTML = '';
+  this.grid.forEach(col => {
+    const colContainer = col.toHtml();
+    colContainer.style.width = `27px`;
+    col.column.forEach(cell => {
+      const element = cell.toHtml();
+      colContainer.appendChild(element);
+    });
+    this.root.appendChild(colContainer);
+  });
   }
 };
 
