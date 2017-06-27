@@ -1,7 +1,10 @@
 /* jshint esversion:6 */
-function Cell(width, height) {
-  this.width = width || 100;
-  this.height = height || 100;
+function Cell(width, height, color) {
+  this.width = width;
+  this.height = height;
+  this.color = color || 'white';
+  this.isEmpty = true;
+
 }
 
 Cell.prototype.toHtml = function () {
@@ -10,5 +13,6 @@ Cell.prototype.toHtml = function () {
   div.style.display = 'inline-block';
   div.style.width = `${this.width}px`;
   div.style.border = '0.25px solid black';
+  div.style.backgroundColor = this.color;
   return div;
 };
